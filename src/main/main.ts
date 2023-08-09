@@ -108,6 +108,8 @@ const createWindow = async () => {
     return { action: 'deny' };
   });
 
+  mainWindow.setBackgroundColor('#0c0d38');
+
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
   new AppUpdater();

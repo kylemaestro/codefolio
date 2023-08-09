@@ -2,17 +2,30 @@
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
+
+h1 {
+  text-align: center;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.splashicon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 body {
   position: relative;
-  color: white;
+  color: rgb(0, 0, 0);
   height: 100vh;
   background: linear-gradient(
     200.96deg,
     #00008b -29.09%,
     #060043 51.77%,
-    #000000 129.35%
+    #0c001e 129.35%
   );
-  font-family: sans-serif;
+  font-family: "Lucida Console", "Courier New", monospace;
   overflow-y: hidden;
   display: flex;
   justify-content: center;
@@ -25,6 +38,7 @@ button {
   border-radius: 10px;
   border: none;
   appearance: none;
+  font-family: "Lucida Console", "Courier New", monospace;
   font-size: 1.3rem;
   box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
     0px 18px 88px -4px rgba(24, 39, 75, 0.14);
@@ -52,11 +66,4 @@ a {
 a:hover {
   opacity: 1;
   text-decoration: none;
-}
-
-.Hello {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
 }

@@ -23,31 +23,31 @@ function SplashScreen() {
         <img width="200" alt="icon" src={icon} />
       </div>
       <h1>kylemeister</h1>
-      <div className="Buttons">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="readme">
-              🗒️
-            </span>
-            readme
-          </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="folded hands">
-              🚩
-            </span>
-            projects
-          </button>
-        </a>
+      <div className="buttons">
+        <Button>
+          <span role="img" aria-label="readme">
+            🗒️
+          </span>
+          readme
+        </Button>
+        <Button>
+          <span role="img" aria-label="folded hands">
+            🚩
+          </span>
+          projects
+        </Button>
+        <Button>
+          <span role="img" aria-label="ai">
+            ✨
+          </span>
+          ai
+        </Button>
+        <Button>
+          <span role="img" aria-label="megaphone">
+            📢
+          </span>
+          contact
+        </Button>
       </div>
     </ChakraProvider>
   );

@@ -1,8 +1,8 @@
 import './App.css';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import { Button, ChakraProvider, ThemeConfig, extendTheme, useColorMode } from '@chakra-ui/react';
+import { Avatar, Badge, Box, Button, ChakraProvider, Flex, ThemeConfig, Text, extendTheme, useColorMode } from '@chakra-ui/react';
 import icon from '../../assets/duck.svg';
-import { createRoot } from 'react-dom/client';
+import { useState } from 'react';
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -17,37 +17,41 @@ function SplashScreen() {
   // See https://github.com/chakra-ui/chakra-ui/discussions/5051
   localStorage.setItem('chakra-ui-color-mode', 'dark');
 
+  const [hasButtonBeenClicked, setHasButtonBeenClicked] = useState(false);
+
   return (
     <ChakraProvider theme={customTheme}>
-      <div className="splashicon">
+      <div className='splashscreen-container'>
+      <div className={hasButtonBeenClicked ? "splashicon image-moved-up" : "splashicon"}>
         <img width="200" alt="icon" src={icon} />
       </div>
       <h1>kylemeister</h1>
-      <div className="buttons">
-        <Button>
+      <div className={hasButtonBeenClicked ? "buttons buttons-moved-up" : "buttons"}>
+        <Button onClick={() => setHasButtonBeenClicked(true)}>
           <span role="img" aria-label="readme">
             🗒️
           </span>
           readme
         </Button>
-        <Button>
+        <Button onClick={() => setHasButtonBeenClicked(true)}>
           <span role="img" aria-label="folded hands">
             🚩
           </span>
           projects
         </Button>
-        <Button>
+        <Button onClick={() => setHasButtonBeenClicked(true)}>
           <span role="img" aria-label="ai">
             ✨
           </span>
           ai
         </Button>
-        <Button>
+        <Button onClick={() => setHasButtonBeenClicked(true)}>
           <span role="img" aria-label="megaphone">
             📢
           </span>
           contact
         </Button>
+      </div>
       </div>
     </ChakraProvider>
   );

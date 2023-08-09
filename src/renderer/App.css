@@ -9,12 +9,12 @@
 }
 
 .buttons-moved-up {
-  transition: 1s;
+  transition: .8s;
   transform: translateY(calc(-30vh + min(0px, 20px - 30vh + 20px)));
 }
 
 .image-moved-up {
-  transition: 1s;
+  transition: .8s;
   transform: translateY(-100vh); /* pushes the image up off the screen */
 }
 
@@ -93,4 +93,13 @@ a {
 a:hover {
   opacity: 1;
   text-decoration: none;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }

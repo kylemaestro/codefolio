@@ -9,12 +9,12 @@
 }
 
 .buttons-moved-up {
-  transition: .8s;
+  transition: .6s;
   transform: translateY(calc(-30vh + min(0px, 20px - 30vh + 20px)));
 }
 
 .image-moved-up {
-  transition: .8s;
+  transition: .6s;
   transform: translateY(-100vh); /* pushes the image up off the screen */
 }
 

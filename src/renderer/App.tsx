@@ -1,8 +1,11 @@
 import './App.css';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import { Avatar, Badge, Box, Button, ChakraProvider, Flex, ThemeConfig, Text, extendTheme, useColorMode, Center, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Stack } from '@chakra-ui/react';
+import { Avatar, Badge, Box, Button, ChakraProvider, Flex, ThemeConfig, Text, extendTheme, useColorMode, Center, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Stack, HStack } from '@chakra-ui/react';
 import icon from '../../assets/duck.svg';
 import { useEffect, useState } from 'react';
+import redditThumb from '../../assets/project-images/archiver.png'
+import chickensThumb from '../../assets/project-images/chickens-preview.png'
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -138,28 +141,32 @@ function SplashScreen() {
                     direction={{ base: 'column', sm: 'row' }}
                     overflow='hidden'
                     variant='outline'
-                    h={120}
+                    h={200}
                   >
                     <Image
                       objectFit='cover'
                       maxW={{ base: '100%', sm: '200px' }}
-                      src='https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
-                      alt='Caffe Latte'
+                      src={redditThumb}
+                      alt='Reddit with code background'
                     />
 
-                    <Stack spacing={4}>
+                    <Stack>
                       <CardBody>
-                        <Heading size='md'>The perfect latte</Heading>
+                      <HStack spacing={2}>
+                        <Heading size='md'>Reddit Archiver</Heading>
+                        <Badge colorScheme='orange'>30 Stars on Github!</Badge>
+                      </HStack>
 
-                        <Text py='2'>
-                          Caffè latte is a coffee beverage of Italian origin made with espresso
-                          and steamed milk.
+                        <Text py='2' mb='-10' size='md'>
+                        Command line utility for backing up
+                        saved Reddit content, including comments, posts, and images,
+                        utilizing Python, the Reddit API, and OAuth2 for authentication.
                         </Text>
                       </CardBody>
 
                       <CardFooter>
-                        <Button variant='solid' colorScheme='blue'>
-                          Buy Latte
+                        <Button variant='solid' colorScheme='gray' leftIcon={<ExternalLinkIcon />}>
+                          Github
                         </Button>
                       </CardFooter>
                     </Stack>
@@ -168,28 +175,31 @@ function SplashScreen() {
                     direction={{ base: 'column', sm: 'row' }}
                     overflow='hidden'
                     variant='outline'
-                    h={120}
+                    h={200}
                   >
                     <Image
                       objectFit='cover'
                       maxW={{ base: '100%', sm: '200px' }}
-                      src='https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
-                      alt='Caffe Latte'
+                      src={chickensThumb}
+                      alt='Pixel art chicken with sunglasses'
                     />
 
                     <Stack spacing={4}>
                       <CardBody>
-                        <Heading size='md'>The perfect latte</Heading>
+                      <HStack spacing={2}>
+                        <Heading size='md'>Flock and Load</Heading>
+                        <Badge colorScheme='red'>Work-in-progress</Badge>
+                      </HStack>
 
-                        <Text py='2'>
-                          Caffè latte is a coffee beverage of Italian origin made with espresso
-                          and steamed milk.
+                        <Text py='2' mb='-10'>
+                        2D Action-strategy game inspired by Worms: Armageddon. Releasing
+                        on Steam in Early Access sometime in 2024!
                         </Text>
                       </CardBody>
 
                       <CardFooter>
-                        <Button variant='solid' colorScheme='blue'>
-                          Buy Latte
+                        <Button variant='solid' colorScheme='gray' leftIcon={<ExternalLinkIcon/>}>
+                          Steam Page
                         </Button>
                       </CardFooter>
                     </Stack>

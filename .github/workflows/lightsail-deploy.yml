@@ -19,7 +19,19 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to Lightsail
+      # SCP the build artifacts to Lightsail
+      - name: Secure Copy to Lightsail
+        uses: appleboy/scp-action@v0.1.1
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ${{ secrets.LIGHTSAIL_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          source: "${{ github.workspace }}/release/*" # For example: "dist/*" if the build outputs to a "dist" directory
+          target: "/home/bitnami/tmp_prod"
+
+      # Reboot web server after copying new files
+      - name: Reboot Apache
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.LIGHTSAIL_HOST }}
@@ -27,12 +39,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /release  # Navigate to the release directory
-
-            # Assuming the /app/ directory is inside the /release/ directory
-            rm -rf app  # Remove the existing /app/ directory on the server
-            cp -r app /home/bitnami/prod/app  # Copy the new /app/ directory
-
-            # Additional deployment steps if needed
+            sudo mv /home/bitnami/tmp_prod/github/workspace/release/app /home/bitnami/prod
+            echo 'rebooting server due to source file changes...'
             sudo /opt/bitnami/ctlscript.sh restart apache
             

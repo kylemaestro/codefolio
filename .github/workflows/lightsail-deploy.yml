@@ -1,0 +1,38 @@
+name: Deploy to Lightsail
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to Lightsail
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ${{ secrets.LIGHTSAIL_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /release  # Navigate to the release directory
+
+            # Assuming the /app/ directory is inside the /release/ directory
+            rm -rf app  # Remove the existing /app/ directory on the server
+            cp -r app /home/bitnami/prod/app  # Copy the new /app/ directory
+
+            # Additional deployment steps if needed
+            sudo /opt/bitnami/ctlscript.sh restart apache
+            

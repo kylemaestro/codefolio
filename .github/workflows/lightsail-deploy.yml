@@ -20,7 +20,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to Lightsail
-        uses: appleboy/ssh-action@v0.2.0
+        uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.LIGHTSAIL_HOST }}
           username: ${{ secrets.LIGHTSAIL_USERNAME }}

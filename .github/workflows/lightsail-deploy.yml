@@ -34,5 +34,5 @@ jobs:
             cp -r app /home/bitnami/prod/app  # Copy the new /app/ directory
 
             # Additional deployment steps if needed
-            sudo ./ctlscript.sh restart apache
+            sudo /opt/bitnami/ctlscript.sh restart apache
             

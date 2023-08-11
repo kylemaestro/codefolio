@@ -28,7 +28,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           source: "${{ github.workspace }}/release/*" # For example: "dist/*" if the build outputs to a "dist" directory
-          target: "/home/bitnami/prod"
+          target: "/home/bitnami/tmp_prod"
 
       # Reboot web server after copying new files
       - name: Reboot Apache
@@ -39,6 +39,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
+            sudo mv /home/bitnami/tmp_prod/github/workspace/release/app /home/bitnami/prod
             echo 'rebooting server due to source file changes...'
             sudo /opt/bitnami/ctlscript.sh restart apache
             

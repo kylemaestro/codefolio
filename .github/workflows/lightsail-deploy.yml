@@ -30,8 +30,8 @@ jobs:
           source: "${{ github.workspace }}/release" # For example: "dist/*" if the build outputs to a "dist" directory
           target: "/home/bitnami/prod/app"
 
-      # Deploy to Lightsail after copying
-      - name: Deploy to Lightsail
+      # Reboot web server after copying new files
+      - name: Reboot Apache
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.LIGHTSAIL_HOST }}
@@ -39,7 +39,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            rm -rf /home/bitnami/prod/app  # Remove the existing /app/ directory on the server
-            mv /home/bitnami/prod/app_temp /home/bitnami/prod/app  # Move the new /app/ directory
+            echo 'rebooting server due to source file changes...'
             sudo /opt/bitnami/ctlscript.sh restart apache
             

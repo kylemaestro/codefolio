@@ -39,7 +39,7 @@ function SplashScreen() {
       <div className='splashscreen-container'>
       <div className={hasButtonBeenClicked ? "splashicon image-moved-up" : "splashicon"}>
         <img width="200" alt="icon" src={icon} />
-        <h1>kylemeister!</h1>
+        <h1>kylemeister</h1>
       </div>
       <div className={hasButtonBeenClicked ? "buttons buttons-moved-up" : "buttons"}>
         <Button onClick={() => {

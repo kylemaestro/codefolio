@@ -27,8 +27,8 @@ jobs:
           username: ${{ secrets.LIGHTSAIL_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          source: "${{ github.workspace }}/release" # For example: "dist/*" if the build outputs to a "dist" directory
-          target: "/home/bitnami/prod/app"
+          source: "${{ github.workspace }}/release/*" # For example: "dist/*" if the build outputs to a "dist" directory
+          target: "/home/bitnami/prod"
 
       # Reboot web server after copying new files
       - name: Reboot Apache

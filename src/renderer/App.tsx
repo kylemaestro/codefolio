@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 import redditThumb from '../../assets/project-images/archiver.png';
 import chickensThumb from '../../assets/project-images/chickens-preview.png';
 import codefolioThumb from '../../assets/project-images/codefolio.png';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { BsGithub, BsSteam } from 'react-icons/bs';
 import { BiSolidBookBookmark } from 'react-icons/bi';
 

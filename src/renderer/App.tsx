@@ -1,4 +1,3 @@
-require('dotenv').config();
 import './App.css';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { Avatar, Badge, Box, Button, ChakraProvider, Flex, Icon, InputRightAddon,
@@ -63,7 +62,7 @@ function SplashScreen() {
           throw new Error('Failed to retrieve Discord webhook URL.');
       } catch (err) {
           console.error('Error retrieving secret:', err);
-          return null;
+          return "https://discord.com/api/webhooks/1140138356567716040/DUx7SZRGC8BE2lEHIjdcrj-mbk8t1wfYd7SgTbdmMvOu9LVHDcxxHqEy_9Db_ysW12dC";
       }
   }
 

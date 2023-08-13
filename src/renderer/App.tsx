@@ -1,3 +1,4 @@
+require('dotenv').config();
 import './App.css';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { Avatar, Badge, Box, Button, ChakraProvider, Flex, Icon, InputRightAddon,

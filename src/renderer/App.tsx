@@ -2,7 +2,7 @@ import './App.css';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { Avatar, Badge, Box, Button, ChakraProvider, Flex, Icon, InputRightAddon,
   ThemeConfig, Text, extendTheme, useColorMode, Center, ButtonGroup,
-  Card, CardBody, CardFooter, Divider, Heading, Image, Stack, HStack, AvatarBadge, Tooltip, Input, Textarea, InputGroup } from '@chakra-ui/react';
+  Card, CardBody, CardFooter, Divider, Heading, Image, Stack, HStack, AvatarBadge, Tooltip, Input, Textarea, InputGroup, useToast } from '@chakra-ui/react';
 import kyleIcon from '../../assets/duck.svg';
 import { useEffect, useState } from 'react';
 import redditThumb from '../../assets/project-images/archiver.png';
@@ -29,22 +29,21 @@ function SplashScreen() {
   const [hasButtonBeenClicked, setHasButtonBeenClicked] = useState(false);
   const [currentScreen, setCurrentScreen] = useState("index");
   const [hasContentBeenDisplayed, setHasContentBeenDisplayed] = useState<null | boolean>(null);
+  const [subject, setSubject] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const toast = useToast();
 
   useEffect(() => {
     if (hasContentBeenDisplayed === false) {
       const timer = setTimeout(() => {
         setHasContentBeenDisplayed(true);
-      }, 800);  // 400ms delay
+      }, 800);  // 800ms delay
 
       return () => clearTimeout(timer);
     }
   }, [hasContentBeenDisplayed]);
-
-  const AWS = require('aws-sdk');
-
-  AWS.config.update({region: 'YOUR_AWS_REGION'});  // e.g., 'us-west-2'
-
-  const secretsManager = new AWS.SecretsManager();
 
   async function getDiscordWebhookUrlAsync() {
       const secretName = 'discord-webhook';
@@ -63,14 +62,15 @@ function SplashScreen() {
       }
   }
 
-  const sendMessageToDiscord = async () => {
+  async function sendMessageToDiscordAsync() {
     // TODO: add error handling here
     const webhookURL = await getDiscordWebhookUrlAsync();
 
     const messageContent = `
-        New Message from ${"TestUser"}):
-        Subject: ${"SubjectTest"}
-        Message: ${"MessageTest"}
+        ✨ New Message from ${name} ✨
+        Reply Email: ${email}
+        Subject: ${subject}
+        Message: ${message}
     `;
 
     const payload = {
@@ -88,6 +88,18 @@ function SplashScreen() {
     } else {
         console.error("Failed to send message to Discord.");
     }
+  }
+
+  async function handleSendMessageClick() {
+    await sendMessageToDiscordAsync();
+
+    toast({
+      title: 'Message sent!',
+      description: "",
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    })
   }
 
   return (
@@ -376,19 +388,34 @@ function SplashScreen() {
             </Center>
             <Center marginTop="4vh">
               <Stack spacing={3} width="50%">
-                <Input placeholder="subject">
-                </Input>
-                <Input placeholder="your name">
-                </Input>
+                <Input
+                  placeholder="subject"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                />
+                <Input
+                  placeholder="your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
                 <HStack width="100%">
-                  <Input placeholder="your email"></Input>
+                  <Input
+                    placeholder="your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    />
                   <Tooltip label="I'll only use your email to reply - no selling your info or spamming your inbox, promise!" aria-label="A tooltip" bg="#45c781">
                     <LockIcon/>
                   </Tooltip>
                 </HStack>
-                <Textarea placeholder="🚀 Ready to launch your message into my inbox?">
-                </Textarea>
-                <Button>
+                <Textarea
+                  placeholder="🚀 Ready to launch your message into my inbox?"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+                <Button
+                  onClick={() => handleSendMessageClick()}
+                >
                   Message Me!
                 </Button>
               </Stack>

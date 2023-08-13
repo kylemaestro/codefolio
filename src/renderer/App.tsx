@@ -1,11 +1,18 @@
 import './App.css';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import { Avatar, Badge, Box, Button, ChakraProvider, Flex, ThemeConfig, Text, extendTheme, useColorMode, Center, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Stack, HStack } from '@chakra-ui/react';
-import icon from '../../assets/duck.svg';
+import { Avatar, Badge, Box, Button, ChakraProvider, Flex, Icon,
+  ThemeConfig, Text, extendTheme, useColorMode, Center, ButtonGroup,
+  Card, CardBody, CardFooter, Divider, Heading, Image, Stack, HStack } from '@chakra-ui/react';
+import kyleIcon from '../../assets/duck.svg';
 import { useEffect, useState } from 'react';
-import redditThumb from '../../assets/project-images/archiver.png'
-import chickensThumb from '../../assets/project-images/chickens-preview.png'
+import redditThumb from '../../assets/project-images/archiver.png';
+import chickensThumb from '../../assets/project-images/chickens-preview.png';
+import codefolioThumb from '../../assets/project-images/codefolio.png';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { BsGithub, BsSteam } from 'react-icons/bs';
+import { BiSolidBookBookmark } from 'react-icons/bi';
+
+const buttonTransitionSpeed = ".1s"
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -38,11 +45,13 @@ function SplashScreen() {
     <ChakraProvider theme={customTheme}>
       <div className='splashscreen-container'>
       <div className={hasButtonBeenClicked ? "splashicon image-moved-up" : "splashicon"}>
-        <img width="200" alt="icon" src={icon} />
+        <img width="200" alt="icon" src={kyleIcon} />
         <h1>kylemeister</h1>
       </div>
       <div className={hasButtonBeenClicked ? "buttons buttons-moved-up" : "buttons"}>
-        <Button onClick={() => {
+        <Button
+        transitionDuration={buttonTransitionSpeed}
+        onClick={() => {
           setHasButtonBeenClicked(true);
           setCurrentScreen("readme");
           if (hasContentBeenDisplayed === null) {
@@ -54,7 +63,9 @@ function SplashScreen() {
           </span>
           readme
         </Button>
-        <Button onClick={() => {
+        <Button
+        transitionDuration={buttonTransitionSpeed}
+        onClick={() => {
           setHasButtonBeenClicked(true);
           setCurrentScreen("projects");
           if (hasContentBeenDisplayed === null) {
@@ -66,20 +77,28 @@ function SplashScreen() {
           </span>
           projects
         </Button>
-        <Button onClick={() => {
+        <Button
+        transitionDuration={buttonTransitionSpeed}
+        onClick={() => {
           setHasButtonBeenClicked(true);
           setCurrentScreen("ai");
-          setHasContentBeenDisplayed(true);
+          if (hasContentBeenDisplayed === null) {
+            setHasContentBeenDisplayed(false);
+          }
         }}>
           <span role="img" aria-label="ai">
             ✨
           </span>
           ai
         </Button>
-        <Button onClick={() => {
+        <Button
+        transitionDuration={buttonTransitionSpeed}
+        onClick={() => {
           setHasButtonBeenClicked(true);
           setCurrentScreen("contact");
-          setHasContentBeenDisplayed(true);
+          if (hasContentBeenDisplayed === null) {
+            setHasContentBeenDisplayed(false);
+          }
         }}>
           <span role="img" aria-label="megaphone">
             📢
@@ -91,9 +110,12 @@ function SplashScreen() {
         <div className='content-container'>
           {currentScreen === 'readme' && (
             <Box
+              overflowY="auto"
+              overflowX="auto"
+              boxShadow="sm"
               bg="#151a24"
-              width="50vw"
-              height="66.67vh"
+              w={["95vw", "90vw", "80vw", "70vw", "60vw"]}
+              h={["75vh", "75vh", "75vh", "70vh", "70vh"]}
               borderRadius="6px"
               position="fixed"
               top="50%"
@@ -109,16 +131,39 @@ function SplashScreen() {
                   : "fadeIn .3s .4s forwards"
               }
             >
-              <Badge borderRadius='2px' px='2' colorScheme='teal'>
-                New!
-              </Badge>
+              <Center w="100%" h="100%">
+                <Stack>
+                <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="40px" marginRight="40px">
+                  &lt;<Box as="span" color="#167cdb">Introduction</Box>&gt;
+                </Text>
+                <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="60px" marginRight="40px">
+                  Hi! I'm <Box as="span" color="#167cdb">Kyle</Box>. I make games and hang out in <Box as="span" color="#167cdb">The Cloud</Box>.
+                </Text>
+                <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="60px" marginRight="40px">
+                  I have 3 years of experience building and deploying <Box as="span" color="#14e051">enterprise-grade</Box> .NET solutions and APIs on AWS. I also develop my own games using the <Box as="span" color="#14e051">Unity Engine</Box>.
+                </Text>
+                <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="60px" marginRight="40px">
+                  Some <Box as="span" color="#14e051">AWS technologies</Box> I'm experienced in include API Gateway, DynamoDB, Lambda, S3, CodePipeline, CodeBuild, Route53, Lightsail, and Cloudwatch.
+                </Text>
+                <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="60px" marginRight="40px">
+                  Some other technologies I'm interested in are Unity, Python, generative AI, <Box as="span" color="#14e051">GPT-4</Box>, React, and Electron.
+                </Text>
+                <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="60px" marginRight="40px">
+                  Interested in collaborating? Check out the <Box as="span" color="#14e051">contact tab</Box> to get in touch!
+                </Text>
+                <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="40px" marginRight="40px">
+                  &lt;<Box as="span" color="#167cdb">Introduction</Box>/&gt;
+                </Text>
+                </Stack>
+              </Center>
             </Box>
           )}
           {currentScreen === 'projects' && (
             <Box
+            boxShadow="sm"
             bg="#151a24"
-            width="50vw"
-            height="66.67vh"
+            w={["95vw", "90vw", "80vw", "70vw", "60vw"]}
+            h={["75vh", "75vh", "75vh", "70vh", "70vh"]}
             borderRadius="6px"
             position="fixed"
             top="50%"
@@ -135,7 +180,8 @@ function SplashScreen() {
             }
           >
             <Center p={4}>
-              <Box overflowY="auto" maxHeight="calc(100vh - 325px)" p={4}> {/* Adjust maxHeight as required */}
+
+              <Box overflowY="auto" maxHeight={["70vh", "70vh", "70vh", "65vh", "65vh"]}>
                 <Stack spacing={4}>
                   <Card
                     direction={{ base: 'column', sm: 'row' }}
@@ -155,17 +201,18 @@ function SplashScreen() {
                       <HStack spacing={2}>
                         <Heading size='md'>Reddit Archiver</Heading>
                         <Badge colorScheme='orange'>30 Stars on Github!</Badge>
+                        <Badge colorScheme='blue'>Open-source</Badge>
                       </HStack>
 
                         <Text py='2' mb='-10' size='md'>
-                        Command line utility for backing up
-                        saved Reddit content, including comments, posts, and images,
-                        utilizing Python, the Reddit API, and OAuth2 for authentication.
+                        CLI utility for backing up
+                        saved Reddit content, including comments, posts, and images.
+                        Uses Python, the Reddit API, and OAuth2.
                         </Text>
                       </CardBody>
 
                       <CardFooter>
-                        <Button variant='solid' colorScheme='gray' leftIcon={<ExternalLinkIcon />}>
+                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsGithub} />}>
                           Github
                         </Button>
                       </CardFooter>
@@ -198,7 +245,7 @@ function SplashScreen() {
                       </CardBody>
 
                       <CardFooter>
-                        <Button variant='solid' colorScheme='gray' leftIcon={<ExternalLinkIcon/>}>
+                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsSteam} />}>
                           Steam Page
                         </Button>
                       </CardFooter>
@@ -208,88 +255,33 @@ function SplashScreen() {
                     direction={{ base: 'column', sm: 'row' }}
                     overflow='hidden'
                     variant='outline'
-                    h={120}
+                    h={200}
                   >
                     <Image
                       objectFit='cover'
                       maxW={{ base: '100%', sm: '200px' }}
-                      src='https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
-                      alt='Caffe Latte'
+                      src={codefolioThumb}
+                      alt='File folder with code in outrun style'
                     />
 
                     <Stack spacing={4}>
                       <CardBody>
-                        <Heading size='md'>The perfect latte</Heading>
+                      <HStack spacing={2}>
+                        <Heading size='md'>Codefolio</Heading>
+                        <Badge colorScheme='blue'>Open-source</Badge>
+                      </HStack>
 
-                        <Text py='2'>
-                          Caffè latte is a coffee beverage of Italian origin made with espresso
-                          and steamed milk.
+                        <Text py='2' mb='-10'>
+                        This website! Built with React+Electron and running on an AWS Lightsail instance.
                         </Text>
                       </CardBody>
 
                       <CardFooter>
-                        <Button variant='solid' colorScheme='blue'>
-                          Buy Latte
+                        <Button variant='solid' colorScheme='gray' marginRight="10px" leftIcon={<Icon as={BsGithub} />} transitionDuration={buttonTransitionSpeed}>
+                          Github
                         </Button>
-                      </CardFooter>
-                    </Stack>
-                  </Card>
-                  <Card
-                    direction={{ base: 'column', sm: 'row' }}
-                    overflow='hidden'
-                    variant='outline'
-                    h={120}
-                  >
-                    <Image
-                      objectFit='cover'
-                      maxW={{ base: '100%', sm: '200px' }}
-                      src='https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
-                      alt='Caffe Latte'
-                    />
-
-                    <Stack spacing={4}>
-                      <CardBody>
-                        <Heading size='md'>The perfect latte</Heading>
-
-                        <Text py='2'>
-                          Caffè latte is a coffee beverage of Italian origin made with espresso
-                          and steamed milk.
-                        </Text>
-                      </CardBody>
-
-                      <CardFooter>
-                        <Button variant='solid' colorScheme='blue'>
-                          Buy Latte
-                        </Button>
-                      </CardFooter>
-                    </Stack>
-                  </Card>
-                  <Card
-                    direction={{ base: 'column', sm: 'row' }}
-                    overflow='hidden'
-                    variant='outline'
-                    h={120}
-                  >
-                    <Image
-                      objectFit='cover'
-                      maxW={{ base: '100%', sm: '200px' }}
-                      src='https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
-                      alt='Caffe Latte'
-                    />
-
-                    <Stack spacing={4}>
-                      <CardBody>
-                        <Heading size='md'>The perfect latte</Heading>
-
-                        <Text py='2'>
-                          Caffè latte is a coffee beverage of Italian origin made with espresso
-                          and steamed milk.
-                        </Text>
-                      </CardBody>
-
-                      <CardFooter>
-                        <Button variant='solid' colorScheme='blue'>
-                          Buy Latte
+                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BiSolidBookBookmark} />} transitionDuration={buttonTransitionSpeed}>
+                          Setup Guide
                         </Button>
                       </CardFooter>
                     </Stack>
@@ -297,6 +289,30 @@ function SplashScreen() {
                 </Stack>
               </Box>
             </Center>
+          </Box>
+          )}
+          { currentScreen === 'contact' && (
+            <Box
+            boxShadow="sm"
+            bg="#151a24"
+            w={["95vw", "90vw", "80vw", "70vw", "60vw"]}
+            h={["75vh", "75vh", "75vh", "70vh", "70vh"]}
+            borderRadius="6px"
+            position="fixed"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
+            opacity="0"
+            //animation="fadeIn .3s .4s forwards"
+            animation={
+              hasContentBeenDisplayed === null
+                ? "fadeIn .3s forwards"
+                : hasContentBeenDisplayed
+                ? "fadeIn .3s forwards"
+                : "fadeIn .3s .4s forwards"
+            }
+          >
+
           </Box>
           )}
         </div>

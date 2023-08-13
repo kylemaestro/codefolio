@@ -15,12 +15,10 @@ import { LockIcon, QuestionOutlineIcon } from '@chakra-ui/icons';
 
 const buttonTransitionSpeed = ".1s"
 
-const config: ThemeConfig = {
-  initialColorMode: 'dark',
-  useSystemColorMode: false,
-}
-
-export const customTheme = extendTheme({ config });
+// Setup AWS for SecretsManager
+const AWS = require('aws-sdk');
+AWS.config.update({region: 'us-east-1'});
+const secretsManager = new AWS.SecretsManager();
 
 function SplashScreen() {
   // The built in theme config for Chakra UI is currently broken.
@@ -42,8 +40,58 @@ function SplashScreen() {
     }
   }, [hasContentBeenDisplayed]);
 
+  const AWS = require('aws-sdk');
+
+  AWS.config.update({region: 'YOUR_AWS_REGION'});  // e.g., 'us-west-2'
+
+  const secretsManager = new AWS.SecretsManager();
+
+  async function getDiscordWebhookUrlAsync() {
+      const secretName = 'discord-webhook';
+
+      try {
+          const data = await secretsManager.getSecretValue({ SecretId: secretName }).promise();
+
+          if (data.SecretString) {
+              const secret = JSON.parse(data.SecretString);
+              return secret.webhookURL;
+          }
+          throw new Error('Failed to retrieve Discord webhook URL.');
+      } catch (err) {
+          console.error('Error retrieving secret:', err);
+          return null;
+      }
+  }
+
+  const sendMessageToDiscord = async () => {
+    // TODO: add error handling here
+    const webhookURL = await getDiscordWebhookUrlAsync();
+
+    const messageContent = `
+        New Message from ${"TestUser"}):
+        Subject: ${"SubjectTest"}
+        Message: ${"MessageTest"}
+    `;
+
+    const payload = {
+        content: messageContent,
+    };
+
+    const response = await fetch(webhookURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+        console.log("Message sent to Discord!");
+    } else {
+        console.error("Failed to send message to Discord.");
+    }
+  }
+
   return (
-    <ChakraProvider theme={customTheme}>
+    <ChakraProvider>
       <div className='splashscreen-container'>
       <div className={hasButtonBeenClicked ? "splashicon image-moved-up" : "splashicon"}>
         <img width="200" alt="icon" src={kyleIcon} />

@@ -58,13 +58,14 @@ function SplashScreen() {
           throw new Error('Failed to retrieve Discord webhook URL.');
       } catch (err) {
           console.error('Error retrieving secret:', err);
-          return "https://discord.com/api/webhooks/1140138356567716040/DUx7SZRGC8BE2lEHIjdcrj-mbk8t1wfYd7SgTbdmMvOu9LVHDcxxHqEy_9Db_ysW12dC";
+          return null;
       }
   }
 
   async function sendMessageToDiscordAsync() {
-    // TODO: add error handling here
-    const webhookURL = await getDiscordWebhookUrlAsync();
+    // TODO: Migrate to EC2 and use IAM roles for secrets manager
+    // const webhookURL = await getDiscordWebhookUrlAsync();
+    const webhookURL = "https://discord.com/api/webhooks/1140138356567716040/DUx7SZRGC8BE2lEHIjdcrj-mbk8t1wfYd7SgTbdmMvOu9LVHDcxxHqEy_9Db_ysW12dC";
 
     const messageContent = `
         ✨ New Message from ${name} ✨

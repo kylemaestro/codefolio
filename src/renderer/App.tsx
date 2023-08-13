@@ -1,8 +1,8 @@
 import './App.css';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import { Avatar, Badge, Box, Button, ChakraProvider, Flex, Icon,
+import { Avatar, Badge, Box, Button, ChakraProvider, Flex, Icon, InputRightAddon,
   ThemeConfig, Text, extendTheme, useColorMode, Center, ButtonGroup,
-  Card, CardBody, CardFooter, Divider, Heading, Image, Stack, HStack } from '@chakra-ui/react';
+  Card, CardBody, CardFooter, Divider, Heading, Image, Stack, HStack, AvatarBadge, Tooltip, Input, Textarea, InputGroup } from '@chakra-ui/react';
 import kyleIcon from '../../assets/duck.svg';
 import { useEffect, useState } from 'react';
 import redditThumb from '../../assets/project-images/archiver.png';
@@ -10,6 +10,8 @@ import chickensThumb from '../../assets/project-images/chickens-preview.png';
 import codefolioThumb from '../../assets/project-images/codefolio.png';
 import { BsGithub, BsSteam } from 'react-icons/bs';
 import { BiSolidBookBookmark } from 'react-icons/bi';
+import { AiFillQuestionCircle } from "react-icons/ai";
+import { LockIcon, QuestionOutlineIcon } from '@chakra-ui/icons';
 
 const buttonTransitionSpeed = ".1s"
 
@@ -311,7 +313,38 @@ function SplashScreen() {
                 : "fadeIn .3s .4s forwards"
             }
           >
-
+            <Center width="100%">
+              <Stack spacing={3}>
+                <Tooltip label="Online" aria-label='Avatar tooltip' placement='right-end' bg="#45c781">
+                  <Avatar
+                    marginTop="8vh"
+                    name="kyle andrus"
+                    size="2xl"
+                    src={kyleIcon}>
+                    <AvatarBadge boxSize='.85em' bg='#45c781'/>
+                  </Avatar>
+                </Tooltip>
+              </Stack>
+            </Center>
+            <Center marginTop="4vh">
+              <Stack spacing={3} width="50%">
+                <Input placeholder="subject">
+                </Input>
+                <Input placeholder="your name">
+                </Input>
+                <HStack width="100%">
+                  <Input placeholder="your email"></Input>
+                  <Tooltip label="I'll only use your email to reply - no selling your info or spamming your inbox, promise!" aria-label="A tooltip" bg="#45c781">
+                    <LockIcon/>
+                  </Tooltip>
+                </HStack>
+                <Textarea placeholder="🚀 Ready to launch your message into my inbox?">
+                </Textarea>
+                <Button>
+                  Message Me!
+                </Button>
+              </Stack>
+            </Center>
           </Box>
           )}
         </div>

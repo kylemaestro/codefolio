@@ -105,6 +105,7 @@ function SplashScreen() {
 
   return (
     <ChakraProvider>
+      <link rel="icon" href="../../assets/favicon.ico" />
       <div className='splashscreen-container'>
       <div className={hasButtonBeenClicked ? "splashicon image-moved-up" : "splashicon"}>
         <img width="200" alt="icon" src={kyleIcon} />

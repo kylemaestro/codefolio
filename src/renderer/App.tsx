@@ -2,12 +2,13 @@ import './App.css';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { Avatar, Badge, Box, Button, ChakraProvider, Flex, Icon, InputRightAddon,
   ThemeConfig, Text, extendTheme, useColorMode, Center, ButtonGroup,
-  Card, CardBody, CardFooter, Divider, Heading, Image, Stack, HStack, AvatarBadge, Tooltip, Input, Textarea, InputGroup, useToast } from '@chakra-ui/react';
+  Card, CardBody, CardFooter, Divider, Heading, Image, Stack, HStack, AvatarBadge, Tooltip, Input, Textarea, InputGroup, useToast, AbsoluteCenter, Link } from '@chakra-ui/react';
 import kyleIcon from '../../assets/duck.svg';
 import { useEffect, useState } from 'react';
 import redditThumb from '../../assets/project-images/archiver.png';
 import chickensThumb from '../../assets/project-images/chickens-preview.png';
 import codefolioThumb from '../../assets/project-images/codefolio.png';
+import dinnerThumb from '../../assets/project-images/dinner.png';
 import { BsGithub, BsSteam } from 'react-icons/bs';
 import { BiSolidBookBookmark } from 'react-icons/bi';
 import { AiFillQuestionCircle } from "react-icons/ai";
@@ -108,7 +109,10 @@ function SplashScreen() {
       <link rel="icon" href="../../assets/favicon.ico" />
       <div className='splashscreen-container'>
       <div className={hasButtonBeenClicked ? "splashicon image-moved-up" : "splashicon"}>
-        <img width="200" alt="icon" src={kyleIcon} />
+        <Image
+          w="200px"
+          src={kyleIcon}
+        />
         <h1>kylemeister!</h1>
       </div>
       <div className={hasButtonBeenClicked ? "buttons buttons-moved-up" : "buttons"}>
@@ -275,9 +279,11 @@ function SplashScreen() {
                       </CardBody>
 
                       <CardFooter>
-                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsGithub}/>} transitionDuration={buttonTransitionSpeed}>
-                          Github
-                        </Button>
+                        <Link href="https://github.com/kylemaestro/Saved-Archiver-for-Reddit">
+                          <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsGithub}/>} transitionDuration={buttonTransitionSpeed}>
+                            Github
+                          </Button>
+                        </Link>
                       </CardFooter>
                     </Stack>
                   </Card>
@@ -340,12 +346,52 @@ function SplashScreen() {
                       </CardBody>
 
                       <CardFooter>
-                        <Button variant='solid' colorScheme='gray' marginRight="10px" leftIcon={<Icon as={BsGithub} />} transitionDuration={buttonTransitionSpeed}>
-                          Github
-                        </Button>
-                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BiSolidBookBookmark} />} transitionDuration={buttonTransitionSpeed}>
-                          Setup Guide
-                        </Button>
+                        <Link href="https://github.com/kylemaestro/codefolio">
+                          <Button variant='solid' colorScheme='gray' marginRight="10px" leftIcon={<Icon as={BsGithub} />} transitionDuration={buttonTransitionSpeed}>
+                            Github
+                          </Button>
+                        </Link>
+                        <Link href="https://github.com/kylemaestro/codefolio#readme">
+                          <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BiSolidBookBookmark} />} transitionDuration={buttonTransitionSpeed}>
+                            Setup Guide
+                          </Button>
+                        </Link>
+                      </CardFooter>
+                    </Stack>
+                  </Card>
+                  <Card
+                    direction={{ base: 'column', sm: 'row' }}
+                    overflow='hidden'
+                    variant='outline'
+                    h={200}
+                  >
+                    <Image
+                      objectFit='cover'
+                      maxW={{ base: '100%', sm: '200px' }}
+                      src={dinnerThumb}
+                      alt='Arcade spaceships firing at each other'
+                    />
+
+                    <Stack spacing={4}>
+                      <CardBody>
+                      <HStack spacing={2}>
+                        <Heading size='md'>Dinner's On You</Heading>
+                        <Badge colorScheme='blue'>Open-source</Badge>
+                      </HStack>
+
+                        <Text py='2' mb='-10'>
+                        2 Player versus game inspired by Asteroids. Players share a
+                        keyboard to control spaceships, lay mines, command battleships,
+                        and destroy the enemy base!
+                        </Text>
+                      </CardBody>
+
+                      <CardFooter>
+                        <Link href="https://github.com/kylemaestro/dinners-on-you">
+                          <Button variant='solid' colorScheme='gray' marginRight="10px" leftIcon={<Icon as={BsGithub} />} transitionDuration={buttonTransitionSpeed}>
+                            Github
+                          </Button>
+                        </Link>
                       </CardFooter>
                     </Stack>
                   </Card>
@@ -418,6 +464,10 @@ function SplashScreen() {
                 <Button
                   transitionDuration={buttonTransitionSpeed}
                   onClick={() => handleSendMessageClick()}
+                  _hover={{
+                    backgroundColor: "#45c781",
+                    color: "black"
+                  }}
                 >
                   Message Me!
                 </Button>
@@ -425,6 +475,35 @@ function SplashScreen() {
             </Center>
           </Box>
           )}
+          { currentScreen === 'ai' && (
+            <Box
+              boxShadow="sm"
+              bg="#151a24"
+              w={["95vw", "90vw", "80vw", "70vw", "60vw"]}
+              h={["75vh", "75vh", "75vh", "70vh", "70vh"]}
+              borderRadius="6px"
+              position="fixed"
+              top="50%"
+              left="50%"
+              transform="translate(-50%, -50%)"
+              opacity="0"
+              //animation="fadeIn .3s .4s forwards"
+              animation={
+                hasContentBeenDisplayed === null
+                  ? "fadeIn .3s forwards"
+                  : hasContentBeenDisplayed
+                  ? "fadeIn .3s forwards"
+                  : "fadeIn .3s .4s forwards"
+              }
+            >
+              <AbsoluteCenter>
+                <Text py='2' mb='-10' fontFamily="Lucida Console">
+                  🚧 Coming soon! 🚧
+                </Text>
+              </AbsoluteCenter>
+            </Box>
+          )}
+
         </div>
       )}
       </div>

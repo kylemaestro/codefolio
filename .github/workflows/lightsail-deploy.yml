@@ -42,15 +42,19 @@ jobs:
             sudo rm -r -f /home/bitnami/prod
             sudo mv -f /home/bitnami/tmp_prod/github/workspace/release /home/bitnami/prod
 
+      - name: Debug LS
+        run: ls
+
       # SCP the favicon to the root build directory
       - name: Deploy favicon
         uses: appleboy/scp-action@v0.1.1
+        working-directory: /home/runner/work/codefolio/codefolio
         with:
           host: ${{ secrets.LIGHTSAIL_HOST }}
           username: ${{ secrets.LIGHTSAIL_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          source: "/home/runner/work/codefolio/codefolio/favicon.ico"
+          source: "favicon.ico"
           target: "/home/bitnami/prod/app/dist/renderer"
 
       # Reboot Apache Server

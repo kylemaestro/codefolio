@@ -48,7 +48,6 @@ jobs:
       # SCP the favicon to the root build directory
       - name: Deploy favicon
         uses: appleboy/scp-action@v0.1.1
-        working-directory: /home/runner/work/codefolio/codefolio
         with:
           host: ${{ secrets.LIGHTSAIL_HOST }}
           username: ${{ secrets.LIGHTSAIL_USERNAME }}

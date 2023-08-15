@@ -335,7 +335,7 @@ function SplashScreen() {
 
                     <Stack spacing={4}>
                       <CardBody>
-                      <HStack spacing={2}>
+                      <HStack spacing={1}>
                         <Heading size='md'>Codefolio</Heading>
                         <Badge colorScheme='blue'>Open-source</Badge>
                       </HStack>
@@ -347,7 +347,7 @@ function SplashScreen() {
 
                       <CardFooter>
                         <Link href="https://github.com/kylemaestro/codefolio">
-                          <Button variant='solid' colorScheme='gray' marginRight="10px" leftIcon={<Icon as={BsGithub} />} transitionDuration={buttonTransitionSpeed}>
+                          <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsGithub} />} transitionDuration={buttonTransitionSpeed}>
                             Github
                           </Button>
                         </Link>

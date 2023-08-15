@@ -275,7 +275,7 @@ function SplashScreen() {
                       </CardBody>
 
                       <CardFooter>
-                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsGithub} transitionDuration={buttonTransitionSpeed}/>}>
+                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsGithub}/>} transitionDuration={buttonTransitionSpeed}>
                           Github
                         </Button>
                       </CardFooter>
@@ -308,7 +308,7 @@ function SplashScreen() {
                       </CardBody>
 
                       <CardFooter>
-                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsSteam} transitionDuration={buttonTransitionSpeed}/>}>
+                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsSteam} />} transitionDuration={buttonTransitionSpeed}>
                           Steam Page
                         </Button>
                       </CardFooter>

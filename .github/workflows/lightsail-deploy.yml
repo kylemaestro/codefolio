@@ -41,8 +41,6 @@ jobs:
           script: |
             sudo rm -r -f /home/bitnami/prod
             sudo mv -f /home/bitnami/tmp_prod/github/workspace/release /home/bitnami/prod
-            echo 'rebooting server due to source file changes...'
-            sudo /opt/bitnami/ctlscript.sh restart apache
 
       # SCP the favicon to the root build directory
       - name: Deploy favicon
@@ -55,3 +53,14 @@ jobs:
           source: "${{ github.workspace }}/favicon.ico"
           target: "/home/bitnami/prod/app/dist/renderer"
 
+      # Reboot Apache Server
+      - name: Reboot Apache Server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ${{ secrets.LIGHTSAIL_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            echo 'rebooting server due to source file changes...'
+            sudo /opt/bitnami/ctlscript.sh restart apache

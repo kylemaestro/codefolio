@@ -30,7 +30,7 @@ jobs:
           source: "${{ github.workspace }}/release/*" # For example: "dist/*" if the build outputs to a "dist" directory
           target: "/home/bitnami/tmp_prod"
 
-      # Deploy the build files to prod directory
+      # Deploy the build files to prod
       - name: Deploy to prod
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -43,4 +43,15 @@ jobs:
             sudo mv -f /home/bitnami/tmp_prod/github/workspace/release /home/bitnami/prod
             echo 'rebooting server due to source file changes...'
             sudo /opt/bitnami/ctlscript.sh restart apache
-            
+
+      # SCP the favicon to the root build directory
+      - name: Deploy favicon
+        uses: appleboy/scp-action@v0.1.1
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ${{ secrets.LIGHTSAIL_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          source: "${{ github.workspace }}/favicon.ico"
+          target: "/home/bitnami/prod/app/dist/renderer"
+

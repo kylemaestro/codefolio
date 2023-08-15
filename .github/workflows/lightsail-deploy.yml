@@ -50,7 +50,7 @@ jobs:
           username: ${{ secrets.LIGHTSAIL_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          source: "${{ github.workspace }}/favicon.ico"
+          source: "/home/runner/work/codefolio/codefolio/favicon.ico"
           target: "/home/bitnami/prod/app/dist/renderer"
 
       # Reboot Apache Server

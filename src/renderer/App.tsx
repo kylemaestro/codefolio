@@ -275,7 +275,7 @@ function SplashScreen() {
                       </CardBody>
 
                       <CardFooter>
-                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsGithub} />}>
+                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsGithub} transitionDuration={buttonTransitionSpeed}/>}>
                           Github
                         </Button>
                       </CardFooter>
@@ -308,7 +308,7 @@ function SplashScreen() {
                       </CardBody>
 
                       <CardFooter>
-                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsSteam} />}>
+                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsSteam} transitionDuration={buttonTransitionSpeed}/>}>
                           Steam Page
                         </Button>
                       </CardFooter>
@@ -411,7 +411,7 @@ function SplashScreen() {
                   </Tooltip>
                 </HStack>
                 <Textarea
-                  placeholder="🚀 Ready to launch your message into my inbox?"
+                  placeholder="🚀 ready to launch your message into my inbox?"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                 />

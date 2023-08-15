@@ -416,6 +416,7 @@ function SplashScreen() {
                   onChange={(e) => setMessage(e.target.value)}
                 />
                 <Button
+                  transitionDuration={buttonTransitionSpeed}
                   onClick={() => handleSendMessageClick()}
                 >
                   Message Me!

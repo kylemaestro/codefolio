@@ -1,7 +1,7 @@
 # Overview
 This project was designed to be a simple web portfolio to showcase some of my projects, as well as get some experience with React, Electron, UI libraries, and hosting on AWS.
 
-Please feel free to fork or clone this repo and use it in any way you see fit!
+**This project is completely open source.** Please feel free to fork or clone this repo and use it in any way you see fit!
 
 # Why Bother With Electron for a Web App?
 Notably, the use of Electron in this project may seem strange as this is intended to be primarily, if not completely, as a web application at this time. However, I wanted to get some experience working with Electron and being able to run the project as a "native" desktop app if I'd like to. While this project does not currently take real advantage of any Electron capabilities, it serves as good practice and a starting point for any future cross-platform projects I wish to take on.

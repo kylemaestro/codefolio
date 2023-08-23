@@ -437,11 +437,6 @@ function SplashScreen() {
             <Center marginTop="4vh">
               <Stack spacing={3} width="50%">
                 <Input
-                  placeholder="subject"
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
-                />
-                <Input
                   placeholder="your name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -456,6 +451,11 @@ function SplashScreen() {
                     <LockIcon/>
                   </Tooltip>
                 </HStack>
+                <Input
+                  placeholder="subject"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                />
                 <Textarea
                   placeholder="🚀 ready to launch your message into my inbox?"
                   value={message}

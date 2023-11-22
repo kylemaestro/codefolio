@@ -2,7 +2,7 @@ import './App.css';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { Avatar, Badge, Box, Button, ChakraProvider, Flex, Icon, InputRightAddon,
   ThemeConfig, Text, extendTheme, useColorMode, Center, ButtonGroup,
-  Card, CardBody, CardFooter, Divider, Heading, Image, Stack, HStack, AvatarBadge, Tooltip, Input, Textarea, InputGroup, useToast, AbsoluteCenter, Link } from '@chakra-ui/react';
+  Card, CardBody, CardFooter, Divider, Heading, Image, Stack, HStack, AvatarBadge, Tooltip, Input, Textarea, InputGroup, useToast, AbsoluteCenter, Link, Progress } from '@chakra-ui/react';
 import kyleIcon from '../../assets/duck.svg';
 import { useEffect, useState } from 'react';
 import redditThumb from '../../assets/project-images/archiver.png';
@@ -30,6 +30,7 @@ function SplashScreen() {
   const [hasButtonBeenClicked, setHasButtonBeenClicked] = useState(false);
   const [currentScreen, setCurrentScreen] = useState("index");
   const [hasContentBeenDisplayed, setHasContentBeenDisplayed] = useState<null | boolean>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [subject, setSubject] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -93,6 +94,19 @@ function SplashScreen() {
   }
 
   async function handleSendMessageClick() {
+    if (name === '' || email === '' || subject === '' || message === '') {
+      toast({
+        title: 'Please fillout all fields prior to launch 💥🚀',
+        description: "",
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      })
+      return;
+    }
+
+    setIsLoading(true);
+
     await sendMessageToDiscordAsync();
 
     toast({
@@ -102,6 +116,15 @@ function SplashScreen() {
       duration: 3000,
       isClosable: true,
     })
+
+    setName('');
+    setEmail('');
+    setSubject('');
+    setMessage('');
+
+    setCurrentScreen("contact-confirmation");
+
+    setIsLoading(false);
   }
 
   return (
@@ -434,7 +457,7 @@ function SplashScreen() {
                 </Tooltip>
               </Stack>
             </Center>
-            <Center marginTop="4vh">
+            <Center marginTop="4vh" id='message-form'>
               <Stack spacing={3} width="50%">
                 <Input
                   placeholder="your name"
@@ -468,12 +491,47 @@ function SplashScreen() {
                     backgroundColor: "#45c781",
                     color: "black"
                   }}
+                  id = "sendMessageButton"
                 >
                   Message Me!
                 </Button>
               </Stack>
             </Center>
           </Box>
+          )}
+          { currentScreen === 'contact-confirmation' && (
+            <Box
+            boxShadow="sm"
+            bg="#151a24"
+            w={["95vw", "90vw", "80vw", "70vw", "60vw"]}
+            h={["75vh", "75vh", "75vh", "70vh", "70vh"]}
+            borderRadius="6px"
+            position="fixed"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
+            >
+              <Center width="100%">
+              <Stack spacing={3}>
+                <Tooltip label="Online" aria-label='Avatar tooltip' placement='right-end' bg="#45c781">
+                  <Avatar
+                    marginTop="8vh"
+                    name="kyle andrus"
+                    size="2xl"
+                    src={kyleIcon}>
+                    <AvatarBadge boxSize='.85em' bg='#45c781'/>
+                  </Avatar>
+                </Tooltip>
+              </Stack>
+            </Center>
+              <Center marginTop="4vh">
+                <Stack spacing={3} width="50%">
+                  <Text py='4' mb='100' fontFamily="Lucida Console">
+                    🚀 Message sent! I'll be in touch soon. 🚀
+                  </Text>
+                </Stack>
+              </Center>
+            </Box>
           )}
           { currentScreen === 'ai' && (
             <Box

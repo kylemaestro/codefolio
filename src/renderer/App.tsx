@@ -328,10 +328,10 @@ function SplashScreen() {
 
                   <Stack spacing={4}>
                     <CardBody>
-                    <HStack spacing={2}>
-                      <Heading size='md'>Flock and Load</Heading>
-                      <Badge colorScheme='red'>Work-in-progress</Badge>
-                    </HStack>
+                      <HStack spacing={2}>
+                        <Heading size='md'>Flock and Load</Heading>
+                        <Badge colorScheme='red'>Work-in-progress</Badge>
+                      </HStack>
 
                       <Text py='2' mb='-10'>
                       2D Action-strategy game inspired by Worms: Armageddon. Releasing
@@ -340,9 +340,11 @@ function SplashScreen() {
                     </CardBody>
 
                     <CardFooter>
-                      <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsSteam} />} transitionDuration={buttonTransitionSpeed}>
-                        Steam Page
-                      </Button>
+                      <Tooltip label="Steam page coming soon!" aria-label="coming-soon-steam" bg="#fc7703" placement='right'>
+                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsSteam} />} transitionDuration={buttonTransitionSpeed} disabled style={{ cursor: 'not-allowed' }}>
+                          Steam Page
+                        </Button>
+                      </Tooltip>
                     </CardFooter>
                   </Stack>
                 </Card>

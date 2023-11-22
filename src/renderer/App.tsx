@@ -236,7 +236,7 @@ function SplashScreen() {
                     Some <Box as="span" color="#14e051">AWS technologies</Box> I'm experienced in include API Gateway, DynamoDB, Lambda, S3, CodePipeline, CodeBuild, Step Functions, Route53, Lightsail, and Cloudwatch.
                   </Text>
                   <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="60px" marginRight="40px">
-                    Some other tech I'm interested in is <Box as="span" color="#14e051">generative AI</Box>, React, ASP.NET, Unity, Python, and building custom PCs.
+                    Some other tech I'm interested in is <Box as="span" color="#14e051">generative AI</Box>, React, ASP.NET, Github Actions, Python, Slack-bots, and building custom PCs.
                   </Text>
                   <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="60px" marginRight="40px">
                     Interested in collaborating? Check out the <Box as="span" color="#14e051">contact tab</Box> to get in touch!

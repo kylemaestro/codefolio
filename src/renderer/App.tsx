@@ -230,13 +230,13 @@ function SplashScreen() {
                     Hi! I'm <Box as="span" color="#167cdb">Kyle</Box>. I make games and hang out in <Box as="span" color="#167cdb">The Cloud</Box>.
                   </Text>
                   <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="60px" marginRight="40px">
-                    I have 3 years of experience building and deploying <Box as="span" color="#14e051">enterprise-grade</Box> .NET solutions and APIs on AWS. I also develop my own games using the <Box as="span" color="#14e051">Unity Engine</Box>.
+                    I have 3 years of experience building and deploying <Box as="span" color="#14e051">enterprise-grade .NET solutions</Box> and APIs on AWS. I also develop my own games using the <Box as="span" color="#14e051">Unity Engine</Box>.
                   </Text>
                   <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="60px" marginRight="40px">
-                    Some <Box as="span" color="#14e051">AWS technologies</Box> I'm experienced in include API Gateway, DynamoDB, Lambda, S3, CodePipeline, CodeBuild, Route53, Lightsail, and Cloudwatch.
+                    Some <Box as="span" color="#14e051">AWS technologies</Box> I'm experienced in include API Gateway, DynamoDB, Lambda, S3, CodePipeline, CodeBuild, Step Functions, Route53, Lightsail, and Cloudwatch.
                   </Text>
                   <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="60px" marginRight="40px">
-                    Some other technologies I'm interested in are Unity, Python, generative AI, <Box as="span" color="#14e051">GPT-4</Box>, React, and Electron.
+                    Some other tech I'm interested in is <Box as="span" color="#14e051">generative AI</Box>, React, ASP.NET, Unity, Python, and building custom PCs.
                   </Text>
                   <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="60px" marginRight="40px">
                     Interested in collaborating? Check out the <Box as="span" color="#14e051">contact tab</Box> to get in touch!

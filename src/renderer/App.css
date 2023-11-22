@@ -11,6 +11,8 @@
 .buttons-moved-up {
   transition: .6s;
   transform: translateY(calc(-30vh + min(0px, 20px - 30vh + 20px)));
+  position: relative; /* This is necessary for z-index to work */
+  z-index: 9999; /* High value to ensure it's on top */
 }
 
 .image-moved-up {

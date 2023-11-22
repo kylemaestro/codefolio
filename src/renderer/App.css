@@ -61,6 +61,17 @@ body {
   align-items: center;
 }
 
+button.disabled-button {
+  cursor: not-allowed;
+}
+
+button.disabled-button:hover {
+  cursor: not-allowed !important;
+  transform: scale(1) !important;
+  opacity: 1 !important;
+  background-color: #2b303a !important;
+}
+
 button {
   background-color: white;
   padding: 10px 20px;

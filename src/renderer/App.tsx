@@ -340,8 +340,8 @@ function SplashScreen() {
                     </CardBody>
 
                     <CardFooter>
-                      <Tooltip label="Steam page coming soon!" aria-label="coming-soon-steam" bg="#fc7703" placement='right'>
-                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsSteam} />} transitionDuration={buttonTransitionSpeed} disabled style={{ cursor: 'not-allowed' }}>
+                      <Tooltip label="Steam page coming soon!" aria-label="coming-soon-steam" bg="#3e3841" color='#eaaeae' placement='right'>
+                        <Button variant='solid' colorScheme='gray' leftIcon={<Icon as={BsSteam} />} className='disabled-button' transitionDuration={buttonTransitionSpeed} disabled style={{ cursor: 'not-allowed'}}>
                           Steam Page
                         </Button>
                       </Tooltip>

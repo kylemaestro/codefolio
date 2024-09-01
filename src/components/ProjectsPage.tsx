@@ -56,11 +56,11 @@ export default function ProjectsPage({ hasContentBeenDisplayed, buttonTransition
                 <CardBody>
                   <HStack spacing={2}>
                     <Heading size='md'>Reddit Archiver</Heading>
-                    <Badge colorScheme='orange'>30 Stars on Github!</Badge>
+                    <Badge colorScheme='orange'>30+ Stars on Github!</Badge>
                     <Badge colorScheme='blue'>Open-source</Badge>
                   </HStack>
                   <Text py='2' mb='-10' size='md'>
-                    CLI utility for backing up saved Reddit content, including comments, posts, and images. Uses Python, the Reddit API, and OAuth2.
+                    CLI utility for backing up saved Reddit content, including comments, posts, and images. Uses Python, the Reddit API, and an OAuth2 authorization flow.
                   </Text>
                 </CardBody>
                 <CardFooter>
@@ -88,10 +88,10 @@ export default function ProjectsPage({ hasContentBeenDisplayed, buttonTransition
                 <CardBody>
                   <HStack spacing={2}>
                     <Heading size='md'>Flock and Load</Heading>
-                    <Badge colorScheme='red'>Work-in-progress</Badge>
+                    <Badge colorScheme='red'>Closed-alpha</Badge>
                   </HStack>
                   <Text py='2' mb='-10'>
-                    2D Action-strategy game inspired by Worms: Armageddon. Releasing on Steam in Early Access sometime in 2024!
+                    2D action-strategy game inspired by the classic Worms: Armageddon. Independently developed with the Unity Engine and C#. Releasing on Steam in 2025!
                   </Text>
                 </CardBody>
                 <CardFooter>
@@ -122,7 +122,7 @@ export default function ProjectsPage({ hasContentBeenDisplayed, buttonTransition
                     <Badge colorScheme='blue'>Open-source</Badge>
                   </HStack>
                   <Text py='2' mb='-10'>
-                    This website! Built with React+Electron and running on an AWS Lightsail instance.
+                    This website! Built with React and Electron and run on a lightweight AWS Lightsail instance.
                   </Text>
                 </CardBody>
                 <CardFooter>
@@ -158,7 +158,7 @@ export default function ProjectsPage({ hasContentBeenDisplayed, buttonTransition
                     <Badge colorScheme='blue'>Open-source</Badge>
                   </HStack>
                   <Text py='2' mb='-10'>
-                    2 Player versus game inspired by Asteroids. Players share a keyboard to control spaceships, lay mines, command battleships, and destroy the enemy base!
+                    2 Player versus game inspired by Asteroids, built with old-school Java Applets. Players share a keyboard to control spaceships, lay mines, command battleships, and destroy the enemy base!
                   </Text>
                 </CardBody>
                 <CardFooter>

@@ -36,7 +36,7 @@ export default function ReadmePage({ hasContentBeenDisplayed }: ReadmePageProps)
             Hi! I'm <Box as="span" color="#167cdb">Kyle</Box>. I make games and hang out in <Box as="span" color="#167cdb">The Cloud</Box>.
           </Text>
           <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="60px" marginRight="40px">
-            I have 3 years of experience building and deploying <Box as="span" color="#14e051">enterprise-grade .NET solutions</Box> and APIs on AWS. I also develop my own games using the <Box as="span" color="#14e051">Unity Engine</Box>.
+            I have 4 years of experience building and deploying <Box as="span" color="#14e051">enterprise-grade .NET solutions</Box> and APIs on AWS. I also develop my own games using the <Box as="span" color="#14e051">Unity Engine</Box>.
           </Text>
           <Text fontSize="2xl" fontFamily="Lucida Console" marginLeft="60px" marginRight="40px">
             Some <Box as="span" color="#14e051">AWS technologies</Box> I'm experienced in include API Gateway, DynamoDB, Lambda, S3, CodePipeline, CodeBuild, Step Functions, Route53, Lightsail, and Cloudwatch.

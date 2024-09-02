@@ -1,12 +1,3 @@
-/*
- * @NOTE: Prepend a `~` to css file paths that are in your node_modules
- *        See https://github.com/webpack-contrib/sass-loader#imports
- */
-
-/* App.css */
-.splashscreen-container {
-  position: relative;
-}
 
 .buttons-moved-up {
   transition: .6s;
@@ -20,45 +11,13 @@
   transform: translateY(-100vh); /* pushes the image up off the screen */
 }
 
-
 h1 {
   text-align: center;
   font-family: "Lucida Console", "Courier New", monospace;
 }
 
-.splashicon {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-  border-radius: 1000px;
-}
-
 img {
   border-radius: 6px;
-}
-
-.buttons {
-  display: flex;
-  gap: 10px;
-  padding: 10px 0;
-}
-
-body {
-  position: relative;
-  color: '#00008b';
-  height: 100vh;
-  background: linear-gradient(
-    200.96deg,
-    #00008b -29.09%,
-    #060043 51.77%,
-    #0c001e 129.35%
-  );
-  font-family: "Lucida Console", "Courier New", monospace;
-  overflow-y: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 button.disabled-button {

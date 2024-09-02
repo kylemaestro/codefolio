@@ -1,6 +1,6 @@
 import './App.css';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import { Button, ChakraProvider, Image, useToast} from '@chakra-ui/react';
+import { AbsoluteCenter, Box, Button, ButtonGroup, Center, ChakraProvider, Container, Flex, Image, Spacer, Stack, Text, useToast} from '@chakra-ui/react';
 import kyleIcon from '../../assets/duck.svg';
 import { useEffect, useState } from 'react';
 import ReadmePage from '../components/ReadmePage';
@@ -37,58 +37,64 @@ function SplashScreen() {
   return (
     <ChakraProvider>
       <link rel="icon" href="../../assets/favicon.ico" />
-      <div className='splashscreen-container'>
-      <div className={hasButtonBeenClicked ? "splashicon image-moved-up" : "splashicon"}>
-        <Image
-          w="200px"
-          src={kyleIcon}
-        />
-        <h1>kylemeister!</h1>
-      </div>
-      <div className={hasButtonBeenClicked ? "buttons buttons-moved-up" : "buttons"}>
-        <Button
-        transitionDuration={buttonTransitionSpeed}
-        onClick={() => {
-          setHasButtonBeenClicked(true);
-          setCurrentScreen("readme");
-          if (hasContentBeenDisplayed === null) {
-            setHasContentBeenDisplayed(false);
-          }
-        }}>
-          <span role="img" aria-label="readme">
-            🗒️
-          </span>
-          readme
-        </Button>
-        <Button
-        transitionDuration={buttonTransitionSpeed}
-        onClick={() => {
-          setHasButtonBeenClicked(true);
-          setCurrentScreen("projects");
-          if (hasContentBeenDisplayed === null) {
-            setHasContentBeenDisplayed(false);
-          }
-        }}>
-          <span role="img" aria-label="folded hands">
-            🚩
-          </span>
-          projects
-        </Button>
-        <Button
-        transitionDuration={buttonTransitionSpeed}
-        onClick={() => {
-          setHasButtonBeenClicked(true);
-          setCurrentScreen("contact");
-          if (hasContentBeenDisplayed === null) {
-            setHasContentBeenDisplayed(false);
-          }
-        }}>
-          <span role="img" aria-label="megaphone">
-            📢
-          </span>
-          contact
-        </Button>
-      </div>
+      <Flex width={"100vw"} height={"100vh"} alignContent={"center"} justifyContent={"center"}>
+        <Box paddingTop='20vh'>
+          <Image
+            src={kyleIcon}
+          />
+          <Text fontSize='3xl' align="center">kylemeister!</Text>
+          <ButtonGroup>
+            <Button
+              size='md'
+              transitionDuration={buttonTransitionSpeed}
+              onClick={() => {
+                setHasButtonBeenClicked(true);
+                setCurrentScreen("readme");
+                if (hasContentBeenDisplayed === null) {
+                  setHasContentBeenDisplayed(false);
+                }
+              }}>
+                <span role="img" aria-label="readme">
+                  🗒️
+                </span>
+                readme
+            </Button>
+            <Spacer/>
+            <Button
+              size='md'
+              transitionDuration={buttonTransitionSpeed}
+              onClick={() => {
+                setHasButtonBeenClicked(true);
+                setCurrentScreen("projects");
+                if (hasContentBeenDisplayed === null) {
+                  setHasContentBeenDisplayed(false);
+                }
+              }}>
+              <span role="img" aria-label="folded hands">
+                🚩
+              </span>
+              projects
+            </Button>
+            <Spacer/>
+            <Button
+              size='md'
+              transitionDuration={buttonTransitionSpeed}
+              onClick={() => {
+                setHasButtonBeenClicked(true);
+                setCurrentScreen("contact");
+                if (hasContentBeenDisplayed === null) {
+                  setHasContentBeenDisplayed(false);
+                }
+              }}>
+              <span role="img" aria-label="megaphone">
+                📢
+              </span>
+              contact
+            </Button>
+          </ButtonGroup>
+        </Box>
+      </Flex>
+
       {hasButtonBeenClicked && (
         <div className='content-container'>
           {currentScreen === 'readme' && (
@@ -112,7 +118,6 @@ function SplashScreen() {
           )}
         </div>
       )}
-      </div>
     </ChakraProvider>
   );
 }

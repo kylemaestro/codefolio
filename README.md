@@ -1,3 +1,5 @@
+[![Deploy to Lightsail](https://github.com/kylemaestro/codefolio/actions/workflows/lightsail-deploy.yml/badge.svg)](https://github.com/kylemaestro/codefolio/actions/workflows/lightsail-deploy.yml)
+
 # Overview
 This project was designed to be a simple web portfolio to showcase some of my projects, as well as get some experience with React, Electron, UI libraries, and hosting on AWS.
 

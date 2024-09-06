@@ -1,5 +1,3 @@
-[![Deploy to Lightsail](https://github.com/kylemaestro/codefolio/actions/workflows/lightsail-deploy.yml/badge.svg)](https://github.com/kylemaestro/codefolio/actions/workflows/lightsail-deploy.yml)
-
 # Overview
 This project was designed to be a simple web portfolio to showcase some of my projects, as well as get some experience with React, Electron, UI libraries, and hosting on AWS.
 
@@ -8,7 +6,7 @@ This project was designed to be a simple web portfolio to showcase some of my pr
 # Why Bother With Electron for a Web App?
 Notably, the use of Electron in this project may seem strange as this is intended to be primarily, if not completely, as a web application at this time. However, I wanted to get some experience working with Electron and being able to run the project as a "native" desktop app if I'd like to. While this project does not currently take real advantage of any Electron capabilities, it serves as good practice and a starting point for any future cross-platform projects I wish to take on.
 
-# Deployment Strategy
+# Deployment Strategy [![Latest AWS Deploy](https://github.com/kylemaestro/codefolio/actions/workflows/lightsail-deploy.yml/badge.svg)](https://github.com/kylemaestro/codefolio/actions/workflows/lightsail-deploy.yml)
 This repository has a simple Github action script to automatically deploy changes to the main branch to my production webserver. The workflow builds my project with dependencies, and then pushes those files to my Apache webserver running in AWS. Files are transfered to a temporary folder, and once done transferring, are then copied to the main production directory. In the future, I'd like to add more error handling to this deployment script to mitigate the risk of downtime due to an interrupted file transfer or similar error.
 
 # Lightsail vs. EC2 vs. The World
